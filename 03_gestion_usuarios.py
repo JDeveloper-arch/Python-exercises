@@ -1,38 +1,39 @@
-"""
-Módulo de Gestión de Usuarios
------------------------------
-Este script limpia, da formato y registra perfiles de usuarios 
-almacenándolos como diccionarios dentro de una lista estructurada.
-"""
+#================================
+# 1. DEFINICIÓN DE FUNCIONES
+#================================
 
 def crear_perfil_usuario(nombre, correo, profesion):
-    """Limpia los datos de entrada y devuelve un diccionario con el perfil del usuario."""
+    """Limpia los datos y devuelve un diccionario con el perfil del usuario."""
     nombre_limpio = nombre.strip().title()
     correo_limpio = correo.strip().lower()
-    profesion_limpia = profesion.strip().title()
-
+    profesion_limpio = profesion.strip().title()
+    
     perfil = {
         "nombre": nombre_limpio,
         "correo": correo_limpio,
-        "profesion": profesion_limpia
+        "profesion": profesion_limpio
     }
-    
     return perfil
+    
+def mostrar_reporte(lista):
+    """Recorre la lista e imprime cada usuario formateado"""
+    print("\n--- REPORTE DE USUARIOS ---")
+    for usuario in lista:
+        print(f"nombre: {usuario['nombre']} | correo: {usuario['correo']} | profesion: {usuario['profesion']}")
+        
+ #==========================================
+# 2. EJECUCIÓN DEL PROGRAMA
+#==========================================
 
-
-# ==========================================
-# EJECUCIÓN PRINCIPAL DEL PROGRAMA
-# ==========================================
-
-# Base de datos de usuarios
+#Base de datos vacia
 lista_usuarios = []
 
-# Registro de usuarios
-usuario1 = crear_perfil_usuario(" JUAN PEREZ", "juanperez@mail", "programador")
-lista_usuarios.append(usuario1)
+# Registramos usuario usando .append
+u1 = crear_perfil_usuario("Pedrito Pablo", "pedritopablo@mail", "asistente")
+lista_usuarios.append(u1)
 
-usuario2 = crear_perfil_usuario(" PEDRO PEREZ", "pedroperez@mail", "Arquitecto")
-lista_usuarios.append(usuario2)
+u2 = crear_perfil_usuario("Pedro Perez", "pedroperez@mail", "Ingeniero")
+lista_usuarios.append(u2)
 
-# Mostrar resultados
-print(f"Usuarios registrados exitosamente:\n{lista_usuarios}")
+# Imprimimos el reporte ordenado
+mostrar_reporte(lista_usuarios)# Mostrar resultados
